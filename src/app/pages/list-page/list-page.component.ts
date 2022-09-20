@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from 'rxjs';
+import { Observable, Subject, switchMap } from 'rxjs';
 import { TodoItem } from 'src/app/interfaces';
 import { TodoListService } from 'src/app/services';
 
@@ -12,18 +12,27 @@ export class ListPageComponent implements OnInit {
 
   public myArray: TodoItem[] = []
 
+  public getItemsAsyncObs: Observable<TodoItem[]>;
+
+  public numberSubject: Subject<number>;
+  private number: number = 1;
+
   public readonly myName: string = 'Raphael'
 
-  constructor(private todoListService: TodoListService) { }
+  constructor(private todoListService: TodoListService) {
+    this.getItemsAsyncObs = todoListService.getItemsAsync()
+
+    this.numberSubject = new Subject()
+  }
 
   ngOnInit(): void {
     // this.myArray = this.todoListService.getItems()
 
-    this.todoListService
-      .getItemsAsync()
-      .subscribe(response => {
-        this.myArray = response
-      })
+    // this.todoListService
+    //   .getItemsAsync()
+    //   .subscribe(response => {
+    //     this.myArray = response
+    //   })
   }
 
   addToMyArray() {
@@ -51,6 +60,11 @@ export class ListPageComponent implements OnInit {
         switchMap(() => this.todoListService.getItemsAsync())
       )
       .subscribe(response => this.myArray = response)
+  }
+
+  onSentNumber(): void {
+    this.numberSubject.next(this.number)
+    this.number++
   }
 
   // soma(value1: number, value2: number): void {
