@@ -7,26 +7,6 @@ import { TodoItem } from 'src/app/interfaces';
   providedIn: 'root'
 })
 export class TodoListService {
-
-  private myList: TodoItem[] = [
-    {
-      id: 1,
-      message: 'Lavar louça'
-    },
-    {
-      id: 2,
-      message: 'Alimentar os gatos'
-    },
-    {
-      id: 3,
-      message: 'Escovar os dentes'
-    },
-    {
-      id: 4,
-      message: 'Descer o lixo'
-    },
-  ]
-
   private readonly rootUrl: string = 'http://localhost:3000'
 
   constructor(private httpClient: HttpClient) { }
@@ -43,21 +23,15 @@ export class TodoListService {
     return this.httpClient.get<TodoItem[]>(url)
   }
 
-  public deleteItemAsync(item: TodoItem): Observable<any> {
+  public deleteItemAsync(item: TodoItem): Observable<{}> {
     const url = `${this.rootUrl}/items/${item.id}`
 
     return this.httpClient.delete(url)
   }
 
-  public getItems(): TodoItem[] {
-    return this.myList
-  }
+  public postItemAsync(item: TodoItem): Observable<TodoItem> {
+    const url = `${this.rootUrl}/items`
 
-  public deleteItem(id: number): TodoItem[] {
-    const index = this.myList.findIndex(el => el.id === id)
-
-    this.myList.splice(index, 1)
-
-    return this.myList
+    return this.httpClient.post<TodoItem>(url, item)
   }
 }

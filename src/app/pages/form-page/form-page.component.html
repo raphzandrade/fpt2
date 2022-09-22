@@ -1,0 +1,30 @@
+<button (click)="onReturn()">Voltar</button> <br />
+<br />
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <label>ID: </label>
+    <input formControlName="id" /> <br />
+    <span class="error-message" *ngIf="getErrors('id', 'required')">
+        ID é obrigatório
+    </span> <br />
+    <span class="error-message" *ngIf="getErrors('id', 'isNotNumber')">
+        ID precisa ser apenas números
+    </span> <br />
+    <span class="error-message" *ngIf="getErrors('id', 'invalidId')">
+        Esse ID já foi utilizado
+    </span> <br />
+
+    <label>Message: </label>
+    <input formControlName="message" /> <br />
+    <span class="error-message" *ngIf="getErrors('message', 'required')">
+        O campo mensagem é obrigatório
+    </span> <br />
+    <span class="error-message" *ngIf="getErrors('message', 'minlength')">
+        O mínimo de caracteres é 10
+    </span> <br />
+    <span class="error-message" *ngIf="getErrors('message', 'maxlength')">
+        O máximo de caracteres é 300
+    </span> <br />
+
+    <br />
+    <button type="submit">Enviar</button>
+</form>

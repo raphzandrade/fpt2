@@ -1,13 +1,7 @@
-<p>My name: {{ myName }}</p>
-
-<br />
-
-<!-- <app-my-card (cardClick)="onCardClick($event)" *ngFor="let number of myArray" [value]="number">
-</app-my-card> -->
-
-<app-my-card (cardClick)="onCardClick($event)" *ngFor="let number of getItemsAsyncObs | async" [value]="number">
+<!-- cards -->
+<app-my-card (cardClick)="onCardClick($event)" *ngFor="let number of myArray" [value]="number">
 </app-my-card>
 
-<p>Number is: {{ numberSubject | async}}</p>
-
-<button (click)="onSentNumber()">Enviar novo número</button>
+<!-- new card button -->
+<br />
+<button (click)="onCreateNewTodo()">Cadastrar uma nova tarefa</button>
