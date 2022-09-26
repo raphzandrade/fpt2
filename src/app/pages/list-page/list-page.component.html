@@ -1,7 +1,21 @@
 <!-- cards -->
-<app-my-card (cardClick)="onCardClick($event)" *ngFor="let number of myArray" [value]="number">
-</app-my-card>
+<ng-container *ngIf="showItems; else spinner">
+    <app-my-card (cardClick)="onCardClick($event)" *ngFor="let number of myArray" [value]="number">
+    </app-my-card>
+</ng-container>
+
+
+<ng-template #spinner>
+    <span>IMAGINA UM SPINNER</span>
+</ng-template>
+
+
+<br />
+<p *ngIf="showMessage">Os items estão sendo carregados.</p>
+<br />
 
 <!-- new card button -->
 <br />
 <button (click)="onCreateNewTodo()">Cadastrar uma nova tarefa</button>
+<br />
+<button (click)="onSeeDirectives()">Ver exemplos de diretivas</button>

@@ -1,0 +1,22 @@
+<ng-container [ngSwitch]="switchCondition">
+
+    <p *ngSwitchCase="1">Condition é um</p>
+
+    <p *ngSwitchCase="2">Condition é dois</p>
+
+    <p *ngSwitchCase="3">Condition é três</p>
+
+    <p *ngSwitchDefault="default">Condition default</p>
+</ng-container>
+<br />
+<button (click)="onAddCondition()">Somar condition</button>
+<br /> <br />
+<div [ngClass]="{'blue': isBlue, 'red': isRed}" [ngStyle]="{'border-radius': borderRadius}">
+    nossa div
+</div>
+
+<br />
+
+<button (click)="onToggleBlue()">Toggle Blue</button>
+<button (click)="onToggleRed()">Toggle Red</button>
+<button (click)="onToggleBorderRadius()">Toggle BorderRadius</button>

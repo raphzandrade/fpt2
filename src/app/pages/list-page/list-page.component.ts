@@ -13,6 +13,8 @@ export class ListPageComponent implements OnInit {
 
   public myArray: TodoItem[] = []
 
+  public showItems: boolean = false;
+  public showMessage: boolean = false;
 
   public readonly myName: string = 'Raphael'
 
@@ -21,24 +23,32 @@ export class ListPageComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.onGetItems()
+  }
+
+  onGetItems(): void {
+    this.showMessage = true;
+
     this.todoListService
       .getItemsAsync()
       .subscribe(response => {
         this.myArray = response
+        this.showMessage = false;
+        this.showItems = true;
       })
   }
 
   onCardClick(item: TodoItem) {
     this.todoListService
       .deleteItemAsync(item)
-      .pipe(
-        switchMap(() => this.todoListService.getItemsAsync())
-      )
-      .subscribe(response => this.myArray = response)
+      .subscribe(() => this.onGetItems())
   }
 
   onCreateNewTodo(): void {
     this.router.navigateByUrl('/my-form')
   }
 
+  onSeeDirectives(): void {
+    this.router.navigateByUrl('/directives-examples')
+  }
 }
