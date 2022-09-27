@@ -5,6 +5,7 @@ import { TodoItem } from 'src/app/interfaces';
 import { TodoListService } from 'src/app/services';
 import { validateId } from 'src/app/validators';
 import { validateNumber } from 'src/app/validators/validate-number.validator';
+import { TodoListPushService } from 'src/app/services/todo-list-push/todo-list-push.service';
 
 @Component({
   selector: 'app-form-page',
@@ -18,7 +19,9 @@ export class FormPageComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private todoListService: TodoListService) {
+    private todoListService: TodoListService,
+    private todoListPushService: TodoListPushService
+  ) {
     this.myForm = this.formBuilder.group({
       id: [null, Validators.compose(
         [
@@ -73,8 +76,10 @@ export class FormPageComponent implements OnInit {
 
     const newTodoItem: TodoItem = new TodoItem(id, message)
 
-    this.todoListService
-      .postItemAsync(newTodoItem)
-      .subscribe(() => this.onReturn())
+    // this.todoListService
+    //   .postItemAsync(newTodoItem)
+    //   .subscribe(() => this.onReturn())
+
+    this.todoListPushService.postItem(newTodoItem, true)
   }
 }

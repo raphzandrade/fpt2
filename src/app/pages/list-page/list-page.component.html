@@ -1,5 +1,5 @@
 <!-- cards -->
-<ng-container *ngIf="showItems; else spinner">
+<!-- <ng-container *ngIf="showItems; else spinner">
     <app-my-card (cardClick)="onCardClick($event)" *ngFor="let number of myArray" [value]="number">
     </app-my-card>
 </ng-container>
@@ -7,8 +7,19 @@
 
 <ng-template #spinner>
     <span>IMAGINA UM SPINNER</span>
-</ng-template>
+</ng-template> -->
 
+<app-my-card (cardClick)="onCardClick($event)" *ngFor="let item of items$ | async" [value]="item">
+</app-my-card>
+
+<br />
+<p>
+    Existem {{ itemCount$ | async }} items na sua lista
+</p>
+
+
+<br />
+<button (click)="onGetItems()">reload items</button>
 
 <br />
 <p *ngIf="showMessage">Os items estão sendo carregados.</p>
@@ -19,3 +30,5 @@
 <button (click)="onCreateNewTodo()">Cadastrar uma nova tarefa</button>
 <br />
 <button (click)="onSeeDirectives()">Ver exemplos de diretivas</button>
+<br />
+<button (click)="onSeePipes()">Ver exemplos de pipes</button>
