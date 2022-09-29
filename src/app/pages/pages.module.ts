@@ -8,6 +8,7 @@ import { DirectivesModule } from '../directives/directives.module';
 import { DirectivesPageComponent } from './directives-page/directives-page.component';
 import { PipesPageComponent } from './pipes-page/pipes-page.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 
@@ -16,13 +17,15 @@ import { PipesModule } from '../pipes/pipes.module';
     ListPageComponent,
     FormPageComponent,
     DirectivesPageComponent,
-    PipesPageComponent
+    PipesPageComponent,
+    LoginPageComponent
   ],
   exports: [
     ListPageComponent,
     FormPageComponent,
     DirectivesPageComponent,
-    PipesPageComponent
+    PipesPageComponent,
+    LoginPageComponent
   ],
   imports: [
     CommonModule,

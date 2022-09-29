@@ -1,15 +1,16 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { TodoItem } from 'src/app/interfaces';
+import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth/auth.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoListPushService {
-
-  private readonly rootUrl: string = 'http://localhost:3000'
 
   private itemsStore: TodoItem[] = [];
 
@@ -19,12 +20,14 @@ export class TodoListPushService {
   private readonly closeSubscription: Subject<void>
     = new Subject()
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(
+    private httpClient: HttpClient,
+    private router: Router,) { }
 
   getItems(): void {
     this.closeSubscription.next()
 
-    const url = `${this.rootUrl}/items`;
+    const url = `${environment.rootUrl}/660/items`;
 
     const requestObservable = this.httpClient.get<TodoItem[]>(url)
 
@@ -42,7 +45,7 @@ export class TodoListPushService {
   deleteItem(item: TodoItem): void {
     this.closeSubscription.next()
 
-    const url = `${this.rootUrl}/items/${item.id}`
+    const url = `${environment.rootUrl}/items/${item.id}`
 
     this.httpClient.delete(url)
       .pipe(takeUntil(this.closeSubscription))
@@ -59,7 +62,7 @@ export class TodoListPushService {
   postItem(item: TodoItem, redirectAfterSuccess?: boolean): void {
     this.closeSubscription.next()
 
-    const url = `${this.rootUrl}/items`
+    const url = `${environment.rootUrl}/items`
 
     this.httpClient
       .post<TodoItem>(url, item)

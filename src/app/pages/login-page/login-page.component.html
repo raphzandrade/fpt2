@@ -1,0 +1,37 @@
+<h1>Login Page</h1>
+
+<h2>Register</h2>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <span>Email:</span><br />
+    <input formControlName="email" /><br /><br />
+
+    <ng-container *ngIf="getErrors('email', 'required')">
+        <span class="error-message">
+            Email é um campo obrigatório
+        </span><br /><br />
+    </ng-container>
+
+    <ng-container *ngIf="getErrors('email', 'email')">
+        <span class="error-message">
+            Insira um email válido
+        </span><br /><br />
+    </ng-container>
+
+    <span>Password:</span><br />
+    <input formControlName="password" /><br /><br />
+
+    <ng-container *ngIf="getErrors('password', 'required')">
+        <span class="error-message">
+            Password é um campo obrigatório
+        </span><br /><br />
+    </ng-container>
+
+    <ng-container *ngIf="getErrors('password', 'minlength')">
+        <span class="error-message">
+            Password precisa ter pelo menos 6 caracteres
+        </span><br /><br />
+    </ng-container>
+
+
+    <button type="submit" [disabled]="disableSubmit">Enviar</button>
+</form>

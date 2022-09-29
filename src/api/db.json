@@ -1,4 +1,46 @@
 {
+  "users": [
+    {
+      "email": "newuser@gmail.com",
+      "password": "$2a$10$r81Xz9Z1bzJvvYrgZ5nY9unyVsG17gbBusKVEdMNaQVJGWHP44S7W",
+      "id": 1
+    },
+    {
+      "email": "user@teste.com",
+      "password": "$2a$10$LbrPxYoyI.3y6KmKTxKkEubNV0LwCoKmVGMEzeDpDXC3Hgi5TQOUW",
+      "id": 2
+    },
+    {
+      "email": "123#@samdfm",
+      "password": "$2a$10$R4ahXqd24XJnKxIvuHs5i.lOso0xXtec3B6RQe/Jlo5/FYxt2VTGK",
+      "id": 3
+    },
+    {
+      "email": "teste@email",
+      "password": "$2a$10$aOPXOUjZ3VfKmkSDsthBuu8xqypFME/U7uJ438.998Bgo.dCWM1me",
+      "id": 4
+    },
+    {
+      "email": "teste@email2",
+      "password": "$2a$10$KuHK6XFnkLbvSCE75YqbiOPg6NYGe3TAKceGnEB5KEsGa6hdbpK22",
+      "id": 5
+    },
+    {
+      "email": "teste@email3",
+      "password": "$2a$10$wtWAZRnwiQqfG/bdd.n1BOIZrogZxW0cPP0wBsWrltabGP7XOgXSK",
+      "id": 6
+    },
+    {
+      "email": "teste@email4",
+      "password": "$2a$10$Iyzn8nwodw4g06hVdGGmzuN/DySh4WdDrW67CucYGUufTM14bguGO",
+      "id": 7
+    },
+    {
+      "email": "teste@email5",
+      "password": "$2a$10$xLyigwfQEgRDLmzmNBTKbe1mZgXABf2lXprxodjmC0jdJHPmGgCqi",
+      "id": 8
+    }
+  ],
   "items": [
     {
       "id": "1",
