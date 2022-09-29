@@ -24,7 +24,6 @@ export class ListPageComponent implements OnInit {
     = this.todoListPushService.items.pipe(map(value => value.length))
 
   constructor(
-    private todoListService: TodoListService,
     private todoListPushService: TodoListPushService,
     private router: Router) { }
 

@@ -9,7 +9,7 @@
     <span>IMAGINA UM SPINNER</span>
 </ng-template> -->
 
-<app-my-card (cardClick)="onCardClick($event)" *ngFor="let item of items$ | async" [value]="item">
+<app-my-card class="card-item" (cardClick)="onCardClick($event)" *ngFor="let item of items$ | async" [value]="item">
 </app-my-card>
 
 <br />
